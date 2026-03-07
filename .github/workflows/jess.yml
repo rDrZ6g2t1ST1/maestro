@@ -15,17 +15,13 @@ jobs:
           unzip -o bclone.zip
           sudo install -m 755 rclone-v1.73.1-linux-amd64/rclone /usr/local/bin/rclone
           rclone version
+          rclone config file
 
       - name: Load rclone config
         run: |
-          rclone config file
           mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
-          tail -n 200 ~/.config/rclone/rclone.conf
 
       - name: Transfer files
         run: |
-          rclone copy mega:h tbox:OnlyClub69/BabyFooji/v1/0x \
-          --transfers 4 \
-          --checkers 8 \
-          -P
+          rclone copy "mega:h" "tbox:OnlyClub69/BabyFooji/v1/0x" --transfers 4 --checkers 8 -P
