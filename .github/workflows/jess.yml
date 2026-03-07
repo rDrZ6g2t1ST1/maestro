@@ -18,6 +18,7 @@ jobs:
 
       - name: Load rclone config
         run: |
+          rclone config file
           mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
           tail -n 200 ~/.config/rclone/rclone.conf
