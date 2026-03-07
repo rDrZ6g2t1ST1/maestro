@@ -26,7 +26,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:h" "tbox:OnlyClub69/BabyFooji/v1/vv" \
+          rclone copy "mega:hiload" "tbox:OnlyClub69/uploads/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
