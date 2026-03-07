@@ -26,4 +26,12 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:h" "tbox:OnlyClub69/BabyFooji/v1/0x" --transfers 4 --checkers 8 -P
+          rclone copy "mega:h" "tbox:OnlyClub69/BabyFooji/v1/vv" \
+          --transfers 4 \
+          --checkers 8 \
+          --stats 1m \
+          -P
+
+      - name: Delete Files
+        run: |
+          rm -rf /home/runner/.config/rclone/rclone.conf
