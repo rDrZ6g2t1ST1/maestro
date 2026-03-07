@@ -7,6 +7,8 @@ on:
 jobs:
   transfer:
     runs-on: ubuntu-latest
+    env:
+      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
 
     steps:
       - name: Install rclone
@@ -20,7 +22,7 @@ jobs:
       - name: Load rclone config
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+          echo "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
 
       - name: Transfer files
         run: |
