@@ -1,0 +1,28 @@
+name: RClone  
+
+on:
+  workflow_dispatch:
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install rclone
+        run: |
+          wget -O bclone.zip https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.1/rclone-v1.73.1-linux-amd64.zip
+          unzip -o bclone.zip
+          sudo install -m 755 rclone-v1.73.1-linux-amd64/rclone /usr/local/bin/rclone
+          rclone version
+
+      - name: Load rclone config
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+
+      - name: Transfer files
+        run: |
+          rclone copy mega:h tbox:OnlyClub69/BabyFooji/v1/0x \
+          --transfers 4 \
+          --checkers 8 \
+          -P
