@@ -1,6 +1,7 @@
 name: RClone  
 
 on:
+  push:
   workflow_dispatch:
 
 jobs:
@@ -19,6 +20,7 @@ jobs:
         run: |
           mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONFIG }}" > ~/.config/rclone/rclone.conf
+          cat ~/.config/rclone/rclone.conf
 
       - name: Transfer files
         run: |
