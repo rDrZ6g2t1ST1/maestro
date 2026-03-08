@@ -26,9 +26,9 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:hiload" "gdriveanto:" \
-          --transfers 1 \
-          --checkers 2 \
+          rclone copy "mega:hiload" "gdriveanto:yss" \
+          --transfers 4 \
+          --checkers 8 \
           --stats 1m \
           -P
 
