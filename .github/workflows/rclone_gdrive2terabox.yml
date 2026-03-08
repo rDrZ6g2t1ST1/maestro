@@ -1,7 +1,6 @@
 name: Gdrive2Terabox  
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
