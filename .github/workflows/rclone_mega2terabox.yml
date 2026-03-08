@@ -26,13 +26,9 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy mega:hiload tbox:uploads/mega/ \
+          rclone copy "mega:hiload" "gdriveanto:" \
           --transfers 1 \
-          --checkers 1 \
-          --multi-thread-streams 0 \
-          --tpslimit 2 \
-          --retries 10 \
-          --low-level-retries 20 \
+          --checkers 2 \
           --stats 1m \
           -P
 
