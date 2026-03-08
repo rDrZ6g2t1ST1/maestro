@@ -1,4 +1,4 @@
-name: RClone  
+name: Mega2Terabox  
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:hiload" "tbox:OnlyClub69/uploads/" \
+          rclone copy "mega:hiload" "tbox:uploads/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
@@ -34,4 +34,5 @@ jobs:
 
       - name: Delete Files
         run: |
-          rm -rf /home/runner/.config/rclone/rclone.conf
+          rm -rf /home/runner/.config
+          sleep 10s
