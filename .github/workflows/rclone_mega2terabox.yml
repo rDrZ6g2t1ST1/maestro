@@ -1,7 +1,6 @@
 name: Mega2Terabox  
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:
