@@ -25,7 +25,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "gdriveanto:yss" "tbox99:uploads/gdrive/" \
+          rclone copy "gdriveanto:up" "tbox99:uploads/gdrive/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
