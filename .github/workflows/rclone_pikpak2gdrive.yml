@@ -1,0 +1,37 @@
+name: Pikpak2Gdrive
+
+on:
+  workflow_dispatch:
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    env:
+      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+
+    steps:
+      - name: Install rclone
+        run: |
+          wget -O bclone.zip https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.1/rclone-v1.73.1-linux-amd64.zip
+          unzip -o bclone.zip
+          sudo install -m 755 rclone-v1.73.1-linux-amd64/rclone /usr/local/bin/rclone
+          rclone version
+          rclone config file
+
+      - name: Load rclone config
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
+
+      - name: Transfer files
+        run: |
+          rclone copy "pikpak:1" "gdriveanto:up/pikpak/" \
+          --transfers 4 \
+          --checkers 8 \
+          --stats 1m \
+          -P
+
+      - name: Delete Files
+        run: |
+          rm -rf /home/runner/.config
+          sleep 10s
