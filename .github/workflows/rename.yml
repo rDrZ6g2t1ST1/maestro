@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Rename Files:
+  Rename_Files:
     runs-on: ubuntu-latest
     env:
       RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
