@@ -29,7 +29,7 @@ jobs:
       - name: Copy rename.sh files
         run: |
           mkdir -p ~/scripts
-          sudo cp rename.sh ~/scripts/rename.sh
+          cp rename.sh ~/scripts/rename.sh
           chmod +x ~/scripts/rename.sh
           bash ~/scripts/rename.sh
 
