@@ -28,7 +28,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "pikpak:1" "tbox99:up/pikpak/" \
+          rclone copy "pikpak:1" "tbox99:uploads/pikpak/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
