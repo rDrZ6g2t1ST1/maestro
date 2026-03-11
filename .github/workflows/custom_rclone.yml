@@ -1,4 +1,4 @@
-name: Gdrive2Terabox  
+name: Custom_Rclone  
 
 on:
   workflow_dispatch:
