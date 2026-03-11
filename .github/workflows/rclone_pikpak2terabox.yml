@@ -20,7 +20,7 @@ jobs:
 
       - name: Load rclone config
         run: |
-          mkdir -p ~/.config/rclone
+          mkdir -p /home/runner/.config/rclone
           mkdir -p ~/scripts
           echo "$RCLONE_CONF" > ~/scripts/rclone_conf.txt
           wget -q -O /home/runner/.config/rclone/rclone.conf -i ~/scripts/rclone_conf.txt
