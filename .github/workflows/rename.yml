@@ -10,6 +10,9 @@ jobs:
       RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install rclone
         run: |
           wget -O bclone.zip https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.1/rclone-v1.73.1-linux-amd64.zip
@@ -25,7 +28,7 @@ jobs:
 
       - name: Copy rename.sh files
         run: |
-          sudo cp rename.sh > ~/scripts/rename.sh
+          sudo cp rename.sh ~/scripts/rename.sh
           chmod +x ~/scripts/rename.sh
           bash ~/scripts/rename.sh
 
