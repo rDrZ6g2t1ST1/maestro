@@ -25,7 +25,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:hiload" "tbox:uploads/mega/" \
+          rclone copy "mega:hiload" "tbox99:uploads/mega/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
