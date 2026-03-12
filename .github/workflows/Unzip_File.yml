@@ -35,7 +35,7 @@ jobs:
           --stats 1m \
           -P
 
-      - name: Delete Files
+      - name: Unzip Files
         run: |
           mkdir -p ~/unzip
           unzip "/home/runner/downloads/*.zip" -d ~/unzip
