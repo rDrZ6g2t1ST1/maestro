@@ -1,0 +1,58 @@
+name: UnZip_Files  
+
+on:
+  workflow_dispatch:
+
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    env:
+      RCLONE_CONF: ${{ secrets.RCLONE_CONF }}
+
+    steps:
+      - name: Install rclone
+        run: |
+          wget -O bclone.zip https://github.com/BenjiThatFoxGuy/bclone/releases/download/v1.73.1/rclone-v1.73.1-linux-amd64.zip
+          unzip -o bclone.zip
+          sudo install -m 755 rclone-v1.73.1-linux-amd64/rclone /usr/local/bin/rclone
+          rclone version
+          rclone config file
+
+      - name: Load rclone config
+        run: |
+          mkdir -p ~/.config/rclone
+          mkdir -p ~/scripts
+          echo "$RCLONE_CONF" > ~/scripts/rclone_conf.txt
+          wget -q -O /home/runner/.config/rclone/rclone.conf -i ~/scripts/rclone_conf.txt
+          rm -rf ~/scripts
+
+      - name: Download Files
+        run: |
+          mkdir -p ~/downloads
+          rclone copy "gdriveyadi:un" "/home/runner/downloads/" \
+          --transfers 4 \
+          --checkers 8 \
+          --stats 1m \
+          -P
+
+      - name: Delete Files
+        run: |
+          mkdir -p ~/unzip
+          unzip "/home/runner/downloads/*.zip" -d ~/unzip
+
+      - name: Upload Files
+        run: |
+          rclone copy "/home/runner/unzip" "gdriveyadi:ex/" \
+          --transfers 4 \
+          --checkers 8 \
+          --stats 1m \
+          -P
+
+          sleep 10s
+
+      - name: Delete Files
+        run: |
+          rm -rf ~/.config
+          rm -rf ~/downloads
+          rm -rf ~/unzip
+          sleep 10s
