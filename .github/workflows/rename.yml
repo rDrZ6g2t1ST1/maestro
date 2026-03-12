@@ -24,7 +24,8 @@ jobs:
       - name: Load rclone config
         run: |
           mkdir -p ~/.config/rclone
-          echo "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
+          echo "$RCLONE_CONF" > ~/scripts/rclone_conf.txt
+          wget -q -O /home/runner/.config/rclone/rclone.conf -i ~/scripts/rclone_conf.txt
 
       - name: Copy rename.sh files
         run: |
