@@ -1,4 +1,4 @@
-name: Terabox2Gdrive
+name: Terabox2GdriveAnto
 
 on:
   workflow_dispatch:
