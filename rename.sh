@@ -1,4 +1,4 @@
-rclone lsf folder -R --include "* 🌌*" | while IFS= read -r f; do 
-  new=$(echo "$f" | sed 's/ 🌌//')
-  rclone moveto "mega:hiload/$f" "mega:hiload/$new"
+rclone lsf mega:udin -R --include "* 🌌🔥*" | while IFS= read -r f; do 
+  new=$(echo "$f" | sed 's/ 🌌🔥//')
+  rclone moveto "mega:udin/$f" "mega:udin/$new"
 done
