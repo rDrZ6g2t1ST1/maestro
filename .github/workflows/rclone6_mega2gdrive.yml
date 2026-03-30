@@ -28,7 +28,7 @@ jobs:
 
       - name: Transfer files
         run: |
-          rclone copy "mega:hiload3" "tbox99:uploads/mega/" \
+          rclone copy "mega:hiload3" "gdriveyadi:XYZ/mega/" \
           --transfers 4 \
           --checkers 8 \
           --stats 1m \
