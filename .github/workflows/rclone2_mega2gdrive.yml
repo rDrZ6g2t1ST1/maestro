@@ -1,4 +1,4 @@
-name: 2Mega2Terabox  
+name: 2Mega2Gdrive
 
 on:
   workflow_dispatch:
